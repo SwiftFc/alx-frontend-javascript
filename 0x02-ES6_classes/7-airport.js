@@ -1,31 +1,32 @@
-class Airport {
-    constructor(name, code) {
-      this._name = this.validateString(name, 'Name');
-      this._code = this.validateString(code, 'Code');
-    }
-  
-    // Getter for name
-    get name() {
-      return this._name;
-    }
-  
-    // Getter for code
-    get code() {
-      return this._code;
-    }
-  
-    // Custom toString method
-    toString() {
-      return `[object ${this._code}] { _name: '${this._name}', _code: '${this._code}' }`;
-    }
-  
-    // Helper function to validate strings
-    validateString(value, fieldName) {
-      if (typeof value !== 'string' || value.trim() === '') {
-        throw new TypeError(`${fieldName} must be a non-empty string.`);
-      }
-      return value.trim();
-    }
+export default class Airport {
+  constructor(name, code) {
+    this.setName(name);
+    this.setCode(code);
   }
-  
-  export default Airport;
+
+  setName(name) {
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    this._name = name;
+  }
+
+  setCode(code) {
+    if (typeof code !== 'string') {
+      throw new TypeError('Code must be a string');
+    }
+    this._code = code;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get code() {
+    return this._code;
+  }
+
+  get [Symbol.toStringTag]() {
+    return this._code;
+  }
+}
