@@ -1,14 +1,9 @@
-export default function (boolean) {
-  return new Promise((resolve, reject) => {
-    const object = {
-      status: 200,
-      body: 'Success',
-    };
+export default function taskBlock(trueOrFalse) {
+  const task = false;
+  const task2 = true;
 
-    if (boolean === true) {
-      resolve(object);
-    } else {
-      reject(new Error('The fake API is not working currently'));
-    }
-  });
+  if (trueOrFalse) {
+    return [task, task2];
+  }
+  return [task, task2];
 }
